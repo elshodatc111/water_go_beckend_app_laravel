@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+
+use App\Http\Controllers\company\CompanyController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -12,3 +15,5 @@ Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/company', [CompanyController::class, 'index'])->name('company');

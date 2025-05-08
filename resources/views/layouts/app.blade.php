@@ -77,7 +77,7 @@
                         <a class="nav-link menu_href" href="#"><i class="bi bi-house-door me-1"></i> Home</a>
                     </li>
                     <li class="nav-item li_menu">
-                        <a class="nav-link menu_href" href="#"><i class="bi bi-box-seam me-1"></i> Company</a>
+                        <a class="nav-link menu_href" href="{{ route('company') }}"><i class="bi bi-box-seam me-1"></i> Company</a>
                     </li>
                     <li class="nav-item li_menu">
                         <a class="nav-link menu_href" href="#"><i class="bi bi-building me-1"></i> Orders</a>
@@ -111,7 +111,7 @@
         </div>
     </nav>
 
-    <main class="py-4 container">
+    <main class="p-4">
         @yield('content')
     </main>
 </div>
