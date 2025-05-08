@@ -16,5 +16,5 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/admin/company', [CompanyController::class, 'index'])->middleware('admin')->name('company');
-Route::post('/admin/company/cretae', [CompanyController::class, 'store'])->middleware('admin')->name('company_cretae');
+Route::get('/company', [CompanyController::class, 'index'])->middleware('admin')->name('company');
+Route::post('/company/cretae', [CompanyController::class, 'store'])->middleware('admin')->name('company_cretae');
