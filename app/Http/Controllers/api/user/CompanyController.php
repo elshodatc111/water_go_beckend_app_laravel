@@ -14,7 +14,7 @@ use App\Models\CompanyLocation;
 
 class CompanyController extends Controller{
     public function apiGet(){
-        $Company = Company::where('status','pending')->get();
+        $Company = Company::where('status','true')->get();
         $res = [];
         foreach ($Company as $key => $value) {
             $res[$key]['id'] = $value->id;
@@ -48,5 +48,6 @@ class CompanyController extends Controller{
         ];
         return response()->json($res,200);
     }
+
 
 }

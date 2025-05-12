@@ -74,13 +74,14 @@
                             <th>Price</th>
                             <th>Balans</th>
                             <th>Part Price</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($Company as $item)
+                        @forelse($Company as $item) 
                             <tr>
                                 <td>{{ $loop->index+1 }}</td>
-                                <td style="text-align:left;"><a href="{{ route('company_show',$item['id']) }}">{{ $item['company_name'] }}</a></td>
+                                <td style="text-align:left;">{{ $item['company_name'] }}</td>
                                 <td>{{ $item['star'] }} ({{ $item['star_count'] }})</td>
                                 <td>
                                     @if($item['status'] == 'pending')
@@ -100,6 +101,12 @@
                                 <td>{{ number_format($item['price'], 0, '.', ' ') }}</td>
                                 <td>{{ number_format($item['balans'], 0, '.', ' ') }}</td>
                                 <td>{{ number_format($item['order_price'], 0, '.', ' ') }}</td>
+                                <td>
+                                    <a href="{{ route('company_show',$item['id']) }}" class="btn btn-info px-1 py-0"><i class="bi bi-building-fill-gear"></i></a>
+                                    <a href="{{ route('company_show',$item['id']) }}" class="btn btn-primary px-1 py-0"><i class="bi bi-people"></i></a>
+                                    <a href="{{ route('company_show',$item['id']) }}" class="btn btn-warning px-1 py-0"><i class="bi bi-bar-chart-line"></i></a>
+                                    <a href="{{ route('company_show',$item['id']) }}" class="btn btn-success px-1 py-0"><i class="bi bi-coin"></i></a>
+                                </td>
                             </tr>
                         @empty
                             <tr>
