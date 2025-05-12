@@ -6,10 +6,16 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder{
-    public function run(): void{
+    public function run(): void {
+        // Foreign key constraint-larni o'chirish
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        
+        // Users jadvalini tozalash
         User::truncate();
+        
         $users = [
             [
                 'name' => 'Admin Elshod',
@@ -48,8 +54,14 @@ class UserSeeder extends Seeder{
                 'password' => Hash::make('password123'),
             ],
         ];
+    
         foreach ($users as $data) {
             User::create($data);
         }
+        
+        // Foreign key constraint-larni tiklash
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
+    
+    
 }

@@ -6,17 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration{
     public function up(): void{
-        Schema::create('company_items', function (Blueprint $table) {
+        Schema::create('company_locations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id')->constrained('companies')->onDelete('cascade');
-            $table->string('hajm');
-            $table->decimal('price', 10, 2);
-            $table->string('icon_url')->nullable();
-            $table->foreignId('admin_id')->constrained('users')->onDelete('cascade');
+            $table->string('lat_max')->nullable();
+            $table->string('lat_man')->nullable();
+            $table->string('lang_max')->nullable();
+            $table->string('lang_man')->nullable();
             $table->timestamps();
         });
     }
+
     public function down(): void{
-        Schema::dropIfExists('company_items');
+        Schema::dropIfExists('company_locations');
     }
 };

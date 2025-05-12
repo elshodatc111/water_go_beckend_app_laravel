@@ -17,10 +17,6 @@ class Company extends Model{
         'icon_url',
         'banner_url',
         'description',
-        'lang_one',
-        'lang_two',
-        'lat_one',
-        'lat_two',
         'admin_id'
     ];
 
@@ -28,12 +24,13 @@ class Company extends Model{
         return $this->belongsTo(User::class, 'admin_id');
     }
 
-    public function items(){
-        return $this->hasMany(CompanyItem::class);
-    }
-
     public function users(){
         return $this->hasMany(CompanyUser::class);
     }
+
+    public function location(){
+        return $this->hasMany(CompanyLocation::class);
+    }
+
 
 }

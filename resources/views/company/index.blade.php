@@ -22,10 +22,6 @@
                         <input type="number" class="form-control" name="order_price" required>
                     </div>
                     <div class="mb-2">
-                        <label for="icon_url" class="form-label">Icon Image</label>
-                        <input type="file" class="form-control" name="icon_url" required>
-                    </div>
-                    <div class="mb-2">
                         <label for="banner_url" class="form-label">Banner Image</label>
                         <input type="file" class="form-control" name="banner_url" required>
                     </div>
@@ -36,25 +32,25 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="mb-2">
-                                <label for="lat_one" class="form-label">Latitude One</label>
+                                <label for="lat_one" class="form-label">Latitude Max</label>
                                 <input type="text" required class="form-control" name="lat_one" placeholder="38.84066493">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="mb-2">
-                                <label for="lang_one" class="form-label">Longitude One</label>
+                                <label for="lang_one" class="form-label">Longitude Min</label>
                                 <input type="text" required class="form-control" name="lang_one" placeholder="65.82605977">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="mb-2">
-                                <label for="lat_two" class="form-label">Latitude Two</label>
+                                <label for="lat_two" class="form-label">Latitude Max</label>
                                 <input type="text" required class="form-control" name="lat_two" placeholder="38.84066493">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="mb-2">
-                                <label for="lang_two" class="form-label">Longitude Two</label>
+                                <label for="lang_two" class="form-label">Longitude Min</label>
                                 <input type="text" required class="form-control" name="lang_two" placeholder="65.82605977">
                             </div>
                         </div>
@@ -84,7 +80,7 @@
                         @forelse($Company as $item)
                             <tr>
                                 <td>{{ $loop->index+1 }}</td>
-                                <td style="text-align:left;"><a href="{{ $item['id'] }}">{{ $item['company_name'] }}</a></td>
+                                <td style="text-align:left;"><a href="{{ route('company_show',$item['id']) }}">{{ $item['company_name'] }}</a></td>
                                 <td>{{ $item['star'] }} ({{ $item['star_count'] }})</td>
                                 <td>
                                     @if($item['status'] == 'pending')
