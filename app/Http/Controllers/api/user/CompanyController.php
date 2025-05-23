@@ -20,7 +20,7 @@ class CompanyController extends Controller{
             $res[$key]['id'] = $value->id;
             $res[$key]['title'] = $value->company_name;
             $res[$key]['star'] = $value->star."(".$value->star_count.")";
-            $res[$key]['price'] = number_format($value->price, 0, '.', ',')." so'm";
+            $res[$key]['price'] = number_format($value->price, 0, '.', ' ')." so'm";
             $res[$key]['image_url'] = $value->banner_url;
         }
         return response()->json($res,200);

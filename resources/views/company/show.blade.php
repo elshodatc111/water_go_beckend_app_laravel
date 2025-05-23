@@ -27,12 +27,11 @@
                             <label for="">Company Status ({{ $Company['status'] }})</label>
                             <input type="hidden" name="id" value="{{ $Company['id'] }}">
                             <div class="col-12 my-1 mt-2">
-                                <select name="status" id="" class="form-control">
-                                    <option value="">change</option>
-                                    <option value="pending">Pending</option>
-                                    <option value="true">True</option>
-                                    <option value="delete">Delete</option>
-                                </select>
+                            <select name="status" class="form-control">
+                                <option value="pending" <?= $Company['status'] == 'pending' ? 'selected' : '' ?>>Pending</option>
+                                <option value="true" <?= $Company['status'] == 'true' ? 'selected' : '' ?>>Aktiv</option>
+                                <option value="delete" <?= $Company['status'] == 'delete' ? 'selected' : '' ?>>Delete</option>
+                            </select>
                             </div>
                             <div class="col-12 my-1">
                                 <button type="submit" class="btn btn-primary w-100">Save</button>

@@ -24,3 +24,7 @@ Route::POST('/company/update/change', [CompanyController::class, 'company_update
 Route::POST('/company/update/image', [CompanyController::class, 'company_update_image'])->middleware('admin')->name('company_update_image');
 Route::POST('/company/location/delete', [CompanyController::class, 'company_location_delete'])->middleware('admin')->name('company_location_delete');
 Route::POST('/company/location/create', [CompanyController::class, 'create_location'])->middleware('admin')->name('create_location');
+Route::get('/company/users/{id}', [CompanyController::class, 'company_user'])->middleware('admin')->name('company_user');
+Route::POST('/company/user/create', [CompanyController::class, 'company_create_user'])->middleware('admin')->name('company_create_user');
+Route::POST('/company/user/trash', [CompanyController::class, 'company_trash_user'])->middleware('admin')->name('company_trash_user');
+Route::POST('/company/user/update/password', [CompanyController::class, 'company_update_password_user'])->middleware('admin')->name('company_update_password_user');

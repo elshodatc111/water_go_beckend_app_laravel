@@ -103,7 +103,7 @@
                                 <td>{{ number_format($item['order_price'], 0, '.', ' ') }}</td>
                                 <td>
                                     <a href="{{ route('company_show',$item['id']) }}" class="btn btn-info px-1 py-0"><i class="bi bi-building-fill-gear"></i></a>
-                                    <a href="{{ route('company_show',$item['id']) }}" class="btn btn-primary px-1 py-0"><i class="bi bi-people"></i></a>
+                                    <a href="{{ route('company_user',$item['id']) }}" class="btn btn-primary px-1 py-0"><i class="bi bi-people"></i></a>
                                     <a href="{{ route('company_show',$item['id']) }}" class="btn btn-warning px-1 py-0"><i class="bi bi-bar-chart-line"></i></a>
                                     <a href="{{ route('company_show',$item['id']) }}" class="btn btn-success px-1 py-0"><i class="bi bi-coin"></i></a>
                                 </td>

@@ -16,6 +16,7 @@ use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
 use App\Http\Requests\UpdateCompanyFileRequest;
 use App\Http\Requests\CreateCompanyLocationRequest;
+use App\Http\Requests\StoreUserCompanyRequest;
 
 class CompanyController extends Controller{
     public function index(){
@@ -50,6 +51,42 @@ class CompanyController extends Controller{
             'lang_man' => $request->lang_two,
         ]);
         return redirect()->back()->with('success', 'Company saved successfully!');
+    }
+    public function company_user($id){
+        $CompanyUser = CompanyUser::where('company_users.company_id',$id)->join('users','users.id','company_users.admin_id')->get();
+        //dd($CompanyUser);
+        return view('company.users',compact('id','CompanyUser'));
+    }
+    public function company_trash_user(Request $request){
+        $id = $request->id;
+        $user = User::find($id);
+        $user->status='false';
+        $user->save();
+        return redirect()->back()->with('success', 'User Delete');
+    }
+    public function company_update_password_user(Request $request){
+        $id = $request->id;
+        $user = User::find($id);
+        $user->password=Hash::make(12345678);
+        $user->save();
+        return redirect()->back()->with('success', 'User Update Password');
+    }
+    public function company_create_user(StoreUserCompanyRequest $request){
+        $validated = $request->validated();
+        $user = User::create([
+            'name' => $validated['name'],
+            'phone' => $validated['phone'],
+            'type' => $validated['status'],
+            'status' => 'true',
+            'email' => $validated['email'],
+            'code' => 4567,
+            'password' => Hash::make($validated['password']),
+        ]);
+        CompanyUser::create([
+            'company_id' => $validated['id'],
+            'admin_id' => $user->id,
+        ]);
+        return redirect()->back()->with('success', 'Create User');
     }
 
     public function show($id){
